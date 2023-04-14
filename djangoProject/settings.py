@@ -144,5 +144,5 @@ EMAIL_AUTHENTICATION = True
 EMAIL_PORT_TLS = 587
 # EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 # EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
-EMAIL_HOST_USER = "shikshanam.academicportal@gmail.com"
-EMAIL_HOST_PASSWORD = "cmojjkclkiknnwaz"
+EMAIL_HOST_USER = "*********@gmail.com"
+EMAIL_HOST_PASSWORD = "**************"
