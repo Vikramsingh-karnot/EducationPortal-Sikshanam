@@ -1,0 +1,20 @@
+{% extends 'portal/base.html' %}
+{% block body %}
+    <div class="content-section">
+        <form action="" method="POST" class="formy">
+<!--            # csrf token for security-->
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">
+                    Delete Notification
+                </legend>
+<!--                context here is called 'object' and not 'post'-->
+                <h2>Are you sure, you want to delete the notification "{{ object.title }}"!?"</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
+                <a class="btn btn-outline-secondary" href="{% url 'sy-notes-detail' object.id %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock body %}

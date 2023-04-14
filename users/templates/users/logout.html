@@ -1,0 +1,10 @@
+{% extends "portal/base.html" %}
+{% block body %}
+    <div class="container pt-5 text-center" style="height: 100vh;"><h2 class="border-top">You have been logged out!</h2>
+            <center><div class="border-top pt-3">
+                <small class="text-muted">
+                     <a class="ml-2" href="{% url 'login' %}">Login Again</a>
+                </small>
+            </div></center>
+    </div>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block body %}
+<section class="fifty text-center" style="background-color: #d6e4f0">
+<h1 style="color: #194350;font-weight:bold;font-size: 65px;padding-top: 40px;" >Your Subjects</h1>
+            <i class="fad fa-angle-double-down fa-4x"></i>
+            <img src="{% static 'portal/svg/subjects.svg' %}" style="height: 400px;margin:10px;width: 400px;">
+            <i class="fad fa-angle-double-down fa-4x"></i>
+</section>
+<section class="fifty">
+    <div id="cards_landscape_wrap-2">
+        <div class="container">
+            <div class="row">
+
+<!--    ------------------------- FYBSCIT -------------------------------------->
+
+                {% if FYSem1 %}
+                    {% for content in FYSem1 %}
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <a href="{% url 'Portal-Dashboard' content.subId %}">
+                            <div class="card-flyer">
+                                <div class="text-box">
+                                    <div class="image-box">
+                                        <img src="{{ content.subImage.url }}" alt="{{ content.subName }}" />
+                                    </div>
+                                    <div class="text-container">
+                                        <h5>{{ content.subName }}</h5>
+                                        <h6>{{ content.subId }}</h6>
+                                        <hr>
+                                        <p>{{ content.subQuote }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+
+<!--    ------------------------- SYBSCIT ------------------------------------            -->
+
+                {% if SYSem3 %}
+                    {% for content in SYSem3 %}
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <a href="{% url 'Portal-Dashboard' content.subId%}">
+                            <div class="card-flyer">
+                                <div class="text-box">
+                                    <div class="image-box">
+                                        <img src="{{ content.subImage.url }}" alt="{{ content.subName }}" />
+                                    </div>
+                                    <div class="text-container">
+                                        <h5>{{ content.subName }}</h5>
+                                        <h6>{{ content.subId }}</h6>
+                                        <hr>
+                                        <p>{{ content.subQuote }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+
+<!--    ------------------------- TYBSCIT ------------------------------------            -->
+
+                {% if TYSem5 %}
+                    {% for content in TYSem5 %}
+                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                        <a href="{% url 'Portal-Dashboard' content.subId %}">
+                            <div class="card-flyer">
+                                <div class="text-box">
+                                    <div class="image-box">
+                                        <img src="{{ content.subImage.url }}" alt="{{ content.subName }}" />
+                                    </div>
+                                    <div class="text-container">
+                                        <h5>{{ content.subName }}</h5>
+                                        <h6>{{ content.subId }}</h6>
+                                        <hr>
+                                        <p>{{ content.subQuote }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock body%}

@@ -1,0 +1,295 @@
+{% extends 'portal/base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block body %}
+    <div>
+    <section class="fifty text-center" style="background-color: #f4c983;">
+        <h1 style="color: #194350;font-weight:bold;font-size: 65px;padding-top: 40px;">Dashboard</h1>
+        <i class="fad fa-angle-double-down fa-4x"></i>
+        <img src="{% static 'portal/svg/dashboard.svg' %}" style="height: 400px;margin:10px;width: 400px;">
+        <i class="fad fa-angle-double-down fa-4x"></i>
+    </section>
+    <section class="container py-4" style="height: 100vh;margin-top: 100px;">
+        <h1> {{ selectedsub }} </h1>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex">
+                    <ul id="tabsJustified" class="nav nav-pills flex-column">
+                        <li class="nav-item "><a href="" data-target="#notes" data-toggle="tab"
+                                                 class="nav-link md text-uppercase active pt-2 pb-2 mb-1"
+                                                 style="color: #184d47"><i class="fad fa-edit mr-3 fa-2x"></i>Notes</a>
+                        </li>
+                        <li class="nav-item "><a href="" data-target="#papers" data-toggle="tab"
+                                                 class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                 style="color: #184d47"><i class="fad fa-copy mr-3 fa-2x"></i>Papers</a>
+                        </li>
+                        {% if T == 'Teacher' %}
+                            <li class="nav-item "><a href="" data-target="#notifications" data-toggle="tab"
+                                                     class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47"><i class="fad fa-bell mr-3 fa-2x"></i>Notify</a>
+                            </li>
+                            <li class="nav-item "><a href="{% url 'Mails' %}" data-target="#email" data-toggle="tab"
+                                                     class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47"><i class="fas fa-mail-bulk mr-3 fa-2x"></i>Send
+                                Mail</a>
+                            </li>
+                            <li class="nav-item "><a href="{% url 'Attachment' %}" data-target="#emailAttach"
+                                                     data-toggle="tab"
+                                                     class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47"><i class="fas fa-paperclip mr-3 fa-2x"></i>Attach</a>
+                            </li>
+                        {% elif S == 'Student' %}
+                            <li class="nav-item "><a href="" data-target="#notificationsStudent" data-toggle="tab"
+                                                     class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47"><i class="fad fa-bell mr-3 fa-2x"></i>Notify</a>
+                            </li>
+                            <li class="nav-item "><a href="" data-target="#studentEmail" data-toggle="tab"
+                                                     class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47"><i class="far fa-envelope mr-3 fa-2x"></i>Send
+                                Mail</a>
+                            </li>
+                            <li class="nav-item "><a href="" data-target="#studentAttachment" data-toggle="tab"
+                                                     class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47"><i class="fas fa-paperclip mr-3 fa-2x"></i>Attach</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item "><a href="" data-target="#attendance" data-toggle="tab"
+                                                 class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                 style="color: #184d47"><i class="far fa-clipboard-user mr-3 fa-2x"></i>Attendance</a>
+                        </li>
+                        {#                        <li class="nav-item "><a href="" data-target="#quiz" data-toggle="tab"#}
+                        {#                                                 class="nav-link md text-uppercase pt-2 pb-2 mb-1"#}
+                        {#                                                 style="color: #184d47"><i#}
+                        {#                                class="fad fa-question-square mr-3 fa-2x"></i>Quiz</a></li>#}
+                        <li class="nav-item "><a href="" data-target="#lectures" data-toggle="tab"
+                                                 class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                 style="color: #184d47"><i class="fad fa-keynote mr-3 fa-2x"></i>Lectures</a>
+                        </li>
+                        {% if T == 'Teacher' %}
+                            <li class="nav-item "><a href="{% url 'Papers' %}" data-target="#paperupload"
+                                                     data-toggle="tab"
+                                                     class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47" target="tp"><i
+                                    class="fas fa-cloud-upload-alt mr-3 fa-2x"></i>Paper</a></li>
+                            <li class="nav-item "><a href="{% url 'Notes' %}" data-target="#noteupload"
+                                                     data-toggle="tab" class="nav-link md text-uppercase pt-2 pb-2 mb-1"
+                                                     style="color: #184d47" target="tn"><i
+                                    class="fas fa-cloud-upload-alt mr-3 fa-2x"></i>Notes</a></li>
+                        {% endif %}
+
+
+                    </ul>
+                    <div class="tab-content border rounded w-100">
+                        <div id="notes" class="tab-pane p fade show active " style="background-color: transparent;">
+                            <div class="row">
+                                <!--   -------------------------------- Notes--------------------------------------------------->
+                                {% for content in fyNoties %}
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row" style="margin:15px 0 0 15px;text-align: center;">
+                                            <div class="col-lg-9 col-md-9 col-sm-9"
+                                                 style="background-color: #3a6351;padding: 8px;border-radius: 10px 0 0 10px;">
+                                                <a href="{{ content.note.url }}"><h5 class="mt-2"
+                                                                                     style="color: #f2edd7;">{{ content.name }}</h5>
+                                                </a></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3"
+                                                 style="background-color: #FFFFFF;border:2px #1e212d solid;padding: 8px;border-radius:0 10px 10px 0 ;">
+                                                <a href="{{ content.note.url }}" download> <i
+                                                        class="far fa-download mt-2 fa-2x"></i></a></div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+
+
+                                {% for content in SyNoties %}
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row" style="margin:15px 0 0 15px;text-align: center;">
+                                            <div class="col-lg-9 col-md-9 col-sm-9"
+                                                 style="background-color: #393e46;padding: 8px;border-radius: 10px 0 0 10px;color: #FFFFFF">
+                                                <a href="{{ content.note.url }}"><h5
+                                                        class="mt-2">{{ content.name }}</h5></a></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3"
+                                                 style="background-color: #FFFFFF;border:2px #1e212d solid;padding: 8px;border-radius:0 10px 10px 0 ;">
+                                                <a href="{{ content.note.url }}" download> <i
+                                                        class="far fa-download mt-2 fa-2x"></i></a></div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+
+
+                                {% for content in TyNoties %}
+
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row" style="margin:15px 0 0 15px;text-align: center;">
+                                            <div class="col-lg-9 col-md-9 col-sm-9"
+                                                 style="background-color: #393e46;padding: 8px;border-radius: 10px 0 0 10px;color: #FFFFFF">
+                                                <a href="{{ content.note.url }}"><h5
+                                                        class="mt-2">{{ content.name }}</h5></a></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3"
+                                                 style="background-color: #FFFFFF;border:2px #1e212d solid;padding: 8px;border-radius:0 10px 10px 0 ;">
+                                                <a href="{{ content.note.url }}" download> <i
+                                                        class="far fa-download mt-2 fa-2x"></i></a></div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                        <!--   -------------------------------- Papers  --------------------------------------------------->
+
+                        <div id="papers" class="tab-pane p fade " style="background-color: transparent;">
+                            <div class="row">
+
+                                {% for content in fyPapers %}
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row" style="margin:15px 0 0 15px;text-align: center;">
+                                            <div class="col-lg-9 col-md-9 col-sm-9"
+                                                 style="background-color: #9f5f80;padding: 8px;border-radius: 10px 0 0 10px;color: #FFFFFF">
+                                                <a href="{{ content.paper.url }}"><h5
+                                                        class="mt-2">{{ content.name }}</h5></a></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3"
+                                                 style="background-color: #FFFFFF;border:2px #1e212d solid;padding: 8px;border-radius:0 10px 10px 0 ;">
+                                                <a href="{{ content.paper.url }}" download> <i
+                                                        class="far fa-download mt-2 fa-2x"></i></a></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                                {% for content in SyPapers %}
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row" style="margin:15px 0 0 15px;text-align: center;">
+                                            <div class="col-lg-9 col-md-9 col-sm-9"
+                                                 style="background-color: #9f5f80;padding: 8px;border-radius: 10px 0 0 10px;color: #FFFFFF">
+                                                <a href="{{ content.paper.url }}"><h5
+                                                        class="mt-2">{{ content.name }}</h5></a></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3"
+                                                 style="background-color: #FFFFFF;border:2px #1e212d solid;padding: 8px;border-radius:0 10px 10px 0 ;">
+                                                <a href="{{ content.paper.url }}" download> <i
+                                                        class="far fa-download mt-2 fa-2x"></i></a></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+
+                                {% for content in TyPapers %}
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                        <div class="row" style="margin:15px 0 0 15px;text-align: center;">
+                                            <div class="col-lg-9 col-md-9 col-sm-9"
+                                                 style="background-color: #9f5f80;padding: 8px;border-radius: 10px 0 0 10px;color: #FFFFFF">
+                                                <a href="{{ content.paper.url }}"><h5
+                                                        class="mt-2">{{ content.name }}</h5></a></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-3"
+                                                 style="background-color: #FFFFFF;border:2px #1e212d solid;padding: 8px;border-radius:0 10px 10px 0 ;">
+                                                <a href="{{ content.paper.url }}" download> <i
+                                                        class="far fa-download mt-2 fa-2x"></i></a></div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                        <!--   -------------------------------- Teacher Notifications  --------------------------------------------------->
+                        <div id="notifications" class="tab-pane fade" style="background-color: transparent;">
+
+
+                            <div class="row m-2">
+
+                                    <iframe style="height:1000pc;" scrolling="no" name="notes"
+                                            src="{% url 'notes'  %}" frameBorder="0"></iframe>
+
+                            </div>
+                        </div>
+
+                        <!--   -------------------------------- Bulk Email to class  --------------------------------------------------->
+                        <div id="email" class="tab-pane fade" style="background-color: transparent;">
+                            <iframe scrolling="no" name="email" src="{% url 'Mails' %}"
+                                    frameBorder="0"></iframe>
+                        </div>
+
+                        <!--   -------------------------------- Bulk Attachment to class  --------------------------------------------------->
+                        <div id="emailAttach" class="tab-pane fade" style="background-color: transparent;">
+                            <iframe scrolling="no" name="emailAttach"
+                                    src="{% url 'Attachment' %}" frameBorder="0"></iframe>
+                        </div>
+
+                        <!--   -------------------------------- Notifications Studnet  --------------------------------------------------->
+                        <div id="notificationsStudent" class="tab-pane fade" style="background-color: transparent;">
+                            <div class="row m-2">
+
+<!--                            {% if fyNotification %}-->
+<!--                                <iframe style="height:1000pc;" scrolling="no" name="notesstudent"-->
+<!--                                        src="{% url 'notes' %}" frameBorder="0"></iframe>-->
+<!--                            {% endif %}-->
+                            {% if fysubIINotification %}
+                                <iframe style="height:1000pc;" scrolling="no" name="fyIInotesStudent"
+                                        src="{% url 'fyIInotes' %}" frameBorder="0"></iframe>
+                            {% endif %}
+
+                            </div>
+                        </div>
+
+                        <!--   --------------------------------  Email to teacher  --------------------------------------------------->
+                        <div id="studentEmail" class="tab-pane fade" style="background-color: transparent;">
+                            <iframe scrolling="no" name="email" src="{% url 'Mails-Student' %}"
+                                    frameBorder="0"></iframe>
+                        </div>
+
+                        <!--   -------------------------------- send attachment to teacher  --------------------------------------------------->
+                        <div id="studentAttachment" class="tab-pane fade" style="background-color: transparent;">
+                            <iframe scrolling="no" name="emailAttach"
+                                    src="{% url 'Attachment-Student' %}" frameBorder="0"></iframe>
+                        </div>
+
+
+                        <!--   -------------------------------- Attendance  --------------------------------------------------->
+                        <div id="attendance" class="tab-pane fade" style="background-color: transparent;">
+                            Attendance ...
+                        </div>
+
+                        <!--   -------------------------------- Quiz --------------------------------------------------->
+                        <div id="quiz" class="tab-pane fade" style="background-color: transparent;">
+                            Quiz ...
+                        </div>
+
+                        <!--   --------------------------------  Lectures  --------------------------------------------------->
+                        <div id="lectures" class="tab-pane fade" style="background-color: transparent;">
+                            Lectures ...
+
+                            <div id="meet"></div>
+                        </div>
+
+                        <!--   -------------------------------- Papers upload  --------------------------------------------------->
+                        <div id="paperupload" class="tab-pane fade" style="background-color: transparent;">
+                            <iframe scrolling="no" name="tp" src="{% url 'Papers' %}" frameBorder="0"></iframe>
+                        </div>
+
+                        <!--   -------------------------------- Notes upload --------------------------------------------------->
+                        <div id="noteupload" class="tab-pane fade" style="background-color: transparent;">
+                            <iframe scrolling="no" name="tn" src="{% url 'Notes' %}" frameBorder="0"></iframe>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </section>
+        </div>
+        <script src='https://192.168.206.128/external_api.js'></script>
+        <script>
+            const domain = '192.168.206.128';
+            const options = {
+                width: 1000,
+                height: 1000,
+                parentNode: document.querySelector('#meet')
+            };
+            const api = new JitsiMeetExternalAPI(domain, options);
+        </script>
+    </section>
+{% endblock %}

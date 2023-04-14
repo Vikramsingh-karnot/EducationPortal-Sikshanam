@@ -1,0 +1,35 @@
+{% extends 'portal/base.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="content-section">
+            <div class="row">
+                <div class="col-lg-7 text-center">
+                    <img src="{% static 'portal/svg/login.svg' %}" style="height: 500px;margin:50px;width: 500px;">
+                </div>
+                <div class="col-lg-5">
+                    <form method="POST" class="mb-5 formy" style="margin-top: 100px;">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">Log In</legend>
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info" type="submit">Login</button>
+                            <small class="text-muted ml-2">
+                                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                            </small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="border-top pt-3 text-center">
+                <small class="text-muted">
+                    Need An Account? <a class="ml-2" href="{% url 'Register' %}">Sign Up Now</a>
+                </small>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+

@@ -1,0 +1,3017 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block body %}
+    <section class="fifty text-center" style="background-color: #fdb827">
+            <h1 style="color: #194350;font-weight:bold;font-size: 65px;padding-top: 40px;" >Timetable</h1>
+            <i class="fad fa-angle-double-down fa-4x"></i>
+            <img src="{% static 'portal/svg/timetable.svg' %}" style="height: 400px;margin:10px;width: 400px;">
+            <i class="fad fa-angle-double-down fa-4x"></i>
+    </section>
+    <br><br>
+    <div class="container">
+        <div class="timetable-img text-center">
+            <img src="img/content/timetable.png" alt="">
+        </div>
+        <div class="table-responsive">
+
+            {#                ---------------------------------------  FY Timetable ----------------------------------#}
+
+            {% if FyMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if FyMonday %}
+                            {% for content in FyMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if FyTuesday %}
+                            {% for content in FyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if FyWednesday %}
+                            {% for content in FyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if FyThursday %}
+                            {% for content in FyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if FyFriday %}
+                            {% for content in FyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if FySaturday %}
+                            {% for content in FySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+
+
+            {#                ---------------------------------------  SY Timetable ----------------------------------#}
+
+            {% if SyMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if SyMonday %}
+                            {% for content in SyMonday %}
+                                <td>
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if SyTuesday %}
+                            {% for content in SyTuesday %}
+                                <td>
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if SyWednesday %}
+                            {% for content in SyWednesday %}
+                                <td>
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if SyThursday %}
+                            {% for content in SyThursday %}
+                                <td>
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if SyFriday %}
+                            {% for content in SyFriday %}
+                                <td>
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if SySaturday %}
+                            {% for content in SySaturday %}
+                                <td>
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+
+            {#                ---------------------------------------  TY Timetable ----------------------------------#}
+
+            {% if TyMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if TyMonday %}
+                            {% for content in TyMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if TyTuesday %}
+                            {% for content in TyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if TyWednesday %}
+                            {% for content in TyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if TyThursday %}
+                            {% for content in TyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if TyFriday %}
+                            {% for content in TyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if TySaturday %}
+                            {% for content in TySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class=" fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+
+            {#                ---------------------------------------  Lydia Timetable ----------------------------------#}
+
+            {% if LydiaMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if LydiaMonday %}
+                            {% for content in LydiaMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle ">Tuesday</td>
+
+                        {% if LydiaTuesday %}
+                            {% for content in LydiaTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if LydiaWednesday %}
+                            {% for content in LydiaWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if LydiaThursday %}
+                            {% for content in LydiaThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if LydiaFriday %}
+                            {% for content in LydiaFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if LydiaSaturday %}
+                            {% for content in LydiaSaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;First Year Timetable</h1>
+                <br>
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if FyMon %}
+                            {% for content in FyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'FyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if FyTuesday %}
+                            {% for content in FyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'FyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if FyWednesday %}
+                            {% for content in FyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'FyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if FyThursday %}
+                            {% for content in FyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'FyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize ">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if FyFriday %}
+                            {% for content in FyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'FyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if FySaturday %}
+                            {% for content in FySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'FySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Second Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if SyMon %}
+                            {% for content in SyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'SyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if SyTuesday %}
+                            {% for content in SyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'SyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if SyWednesday %}
+                            {% for content in SyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'SyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if SyThursday %}
+                            {% for content in SyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'SyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if SyFriday %}
+                            {% for content in SyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'SyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if SySaturday %}
+                            {% for content in SySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'SySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Third Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if TyMon %}
+                            {% for content in TyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'TyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if TyTuesday %}
+                            {% for content in TyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'TyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if TyWednesday %}
+                            {% for content in TyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'TyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if TyThursday %}
+                            {% for content in TyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'TyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if TyFriday %}
+                            {% for content in TyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'TyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if TySaturday %}
+                            {% for content in TySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'lydia' %}
+                                        <a href="{% url 'TySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+            {% endif %}
+
+
+            {#                ---------------------------------------  Roy Timetable ----------------------------------#}
+
+            {% if RoyMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if RoyMonday %}
+                            {% for content in RoyMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle ">Tuesday</td>
+
+                        {% if RoyTuesday %}
+                            {% for content in RoyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if RoyWednesday %}
+                            {% for content in RoyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if RoyThursday %}
+                            {% for content in RoyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if RoyFriday %}
+                            {% for content in RoyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if RoySaturday %}
+                            {% for content in RoySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;First Year Timetable</h1>
+                <br>
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if FyMon %}
+                            {% for content in FyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'FyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if FyTuesday %}
+                            {% for content in FyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'FyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if FyWednesday %}
+                            {% for content in FyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'FyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if FyThursday %}
+                            {% for content in FyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'FyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize ">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if FyFriday %}
+                            {% for content in FyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'FyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if FySaturday %}
+                            {% for content in FySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'FySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Second Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if SyMon %}
+                            {% for content in SyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'SyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if SyTuesday %}
+                            {% for content in SyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'SyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if SyWednesday %}
+                            {% for content in SyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'SyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if SyThursday %}
+                            {% for content in SyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'SyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if SyFriday %}
+                            {% for content in SyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'SyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if SySaturday %}
+                            {% for content in SySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'SySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Third Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if TyMon %}
+                            {% for content in TyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'TyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if TyTuesday %}
+                            {% for content in TyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'TyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if TyWednesday %}
+                            {% for content in TyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'TyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if TyThursday %}
+                            {% for content in TyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'TyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if TyFriday %}
+                            {% for content in TyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'TyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if TySaturday %}
+                            {% for content in TySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'roy' %}
+                                        <a href="{% url 'TySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+            {% endif %}
+
+
+
+            {#                ----------------------------------  Melissa Timetable ----------------------------------#}
+
+
+            {% if MelissaMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if MelissaMonday %}
+                            {% for content in MelissaMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle ">Tuesday</td>
+
+                        {% if MelissaTuesday %}
+                            {% for content in MelissaTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if MelissaWednesday %}
+                            {% for content in MelissaWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if MelissaThursday %}
+                            {% for content in MelissaThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if MelissaFriday %}
+                            {% for content in MelissaFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if MelissaSaturday %}
+                            {% for content in MelissaSaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;First Year Timetable</h1>
+                <br>
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if FyMon %}
+                            {% for content in FyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'melissa' %}
+                                        <a href="{% url 'FyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if FyTuesday %}
+                            {% for content in FyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'melissa' %}
+                                        <a href="{% url 'FyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if FyWednesday %}
+                            {% for content in FyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'melissa' %}
+                                        <a href="{% url 'FyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if FyThursday %}
+                            {% for content in FyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'melissa' %}
+                                        <a href="{% url 'FyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize ">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if FyFriday %}
+                            {% for content in FyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'melissa' %}
+                                        <a href="{% url 'FyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if FySaturday %}
+                            {% for content in FySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'melissa' %}
+                                        <a href="{% url 'FySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+            {% endif %}
+
+
+
+            {#                ---------------------------------------  Aaron Timetable ----------------------------------#}
+
+
+            {% if AaronMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if AaronMonday %}
+                            {% for content in AaronMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle ">Tuesday</td>
+
+                        {% if AaronTuesday %}
+                            {% for content in AaronTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if AaronWednesday %}
+                            {% for content in AaronWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if AaronThursday %}
+                            {% for content in AaronThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if AaronFriday %}
+                            {% for content in AaronFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if AaronSaturday %}
+                            {% for content in AaronSaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;First Year Timetable</h1>
+                <br>
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if FyMon %}
+                            {% for content in FyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'FyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if FyTuesday %}
+                            {% for content in FyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'FyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if FyWednesday %}
+                            {% for content in FyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'FyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if FyThursday %}
+                            {% for content in FyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'FyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize ">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if FyFriday %}
+                            {% for content in FyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'FyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if FySaturday %}
+                            {% for content in FySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'FySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Second Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if SyMon %}
+                            {% for content in SyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'SyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if SyTuesday %}
+                            {% for content in SyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'SyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if SyWednesday %}
+                            {% for content in SyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'SyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if SyThursday %}
+                            {% for content in SyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'SyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if SyFriday %}
+                            {% for content in SyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'SyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if SySaturday %}
+                            {% for content in SySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'SySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Third Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if TyMon %}
+                            {% for content in TyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'TyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if TyTuesday %}
+                            {% for content in TyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'TyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if TyWednesday %}
+                            {% for content in TyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'TyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if TyThursday %}
+                            {% for content in TyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'TyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if TyFriday %}
+                            {% for content in TyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'TyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if TySaturday %}
+                            {% for content in TySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'aaron' %}
+                                        <a href="{% url 'TySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+            {% endif %}
+
+
+            {#                ---------------------------------------  Ashok Timetable ----------------------------------#}
+
+            {% if AshokMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if AshokMonday %}
+                            {% for content in AshokMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle ">Tuesday</td>
+
+                        {% if AshokTuesday %}
+                            {% for content in AshokTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if AshokWednesday %}
+                            {% for content in AshokWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if AshokThursday %}
+                            {% for content in AshokThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if AshokFriday %}
+                            {% for content in AshokFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if AshokSaturday %}
+                            {% for content in AshokSaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;First Year Timetable</h1>
+                <br>
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if FyMon %}
+                            {% for content in FyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'bingi' %}
+                                        <a href="{% url 'FyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if FyTuesday %}
+                            {% for content in FyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'bingi' %}
+                                        <a href="{% url 'FyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if FyWednesday %}
+                            {% for content in FyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'bingi' %}
+                                        <a href="{% url 'FyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if FyThursday %}
+                            {% for content in FyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'bingi' %}
+                                        <a href="{% url 'FyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize ">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if FyFriday %}
+                            {% for content in FyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'bingi' %}
+                                        <a href="{% url 'FyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if FySaturday %}
+                            {% for content in FySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'bingi' %}
+                                        <a href="{% url 'FySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+
+
+            {#                ---------------------------------------  Subhash Timetable ----------------------------------#}
+
+
+            {% if SubhashMonday %}
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if SubhashMonday %}
+                            {% for content in SubhashMonday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle ">Tuesday</td>
+
+                        {% if SubhashTuesday %}
+                            {% for content in SubhashTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if SubhashWednesday %}
+                            {% for content in SubhashWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if SubhashThursday %}
+                            {% for content in SubhashThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if SubhashFriday %}
+                            {% for content in SubhashFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if SubhashSaturday %}
+                            {% for content in SubhashSaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                            <span class="fontsize">
+                                                {{ content.SubName }}
+                                            </span>
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Second Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if SyMon %}
+                            {% for content in SyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'SyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if SyTuesday %}
+                            {% for content in SyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'SyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if SyWednesday %}
+                            {% for content in SyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'SyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if SyThursday %}
+                            {% for content in SyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'SyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if SyFriday %}
+                            {% for content in SyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'SyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if SySaturday %}
+                            {% for content in SySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'SySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <h1 class="text-center" style="color: #144434;font-size: 35px">&nbsp;&nbsp;Third Year Timetable</h1>
+                <br>
+
+                <table class="table table-bordered text-center">
+                    <thead>
+                    <tr class="bg-light-gray">
+                        <td class="text-uppercase">Time
+                        </td>
+                        <td class="text-uppercase slot">08:00</td>
+                        <td class="text-uppercase slot">09:00</td>
+                        <td class="text-uppercase slot">10:00</td>
+                        <td class="text-uppercase slot">11:00</td>
+                        <td class="text-uppercase slot">11:50</td>
+                        <td class="text-uppercase slot">12:30</td>
+                        <td class="text-uppercase slot">01:30</td>
+                        <td class="text-uppercase slot">02:30</td>
+                        <td class="text-uppercase slot">03:30</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="align-middle">Monday</td>
+
+                        {% if TyMon %}
+                            {% for content in TyMon %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'TyMondayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Tuesday</td>
+
+                        {% if TyTuesday %}
+                            {% for content in TyTuesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'TyTuesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Wednesday</td>
+
+                        {% if TyWednesday %}
+                            {% for content in TyWednesday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'TyWednesdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Thursday</td>
+
+                        {% if TyThursday %}
+                            {% for content in TyThursday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'TyThursdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Friday</td>
+
+                        {% if TyFriday %}
+                            {% for content in TyFriday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'TyFridayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+
+                    <tr>
+                        <td class="align-middle">Saturday</td>
+
+                        {% if TySaturday %}
+                            {% for content in TySaturday %}
+                                <td class="{{ content.SubStatus }}">
+                                    {% if content.SubTeacher.uname.username == 'subhash' %}
+                                        <a href="{% url 'TySaturdayUpdate' content.SubName %}">
+                                            <span class="fontsize font-weight-bold text-primary">
+                                                {{ content.SubName }}
+                                            </span>
+                                        </a>
+                                    {% else %}
+                                        <span class="fontsize">
+                                                {{ content.SubName }}
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock body %}
